@@ -11,7 +11,7 @@ const rl = readline.createInterface({
 });
 
 
-const pigLatin = (word) => {
+const pigLatinTest = (word) => {
   // The basic idea of Pig Latin is to take the first letters of a word up to the first vowel, move them to the end of the word, and add 'ay' to the end of it.
   
   //get word = car
@@ -24,7 +24,9 @@ const pigLatin = (word) => {
      console.log ("word + 'yay'",word + 'yay')
     return word + 'yay'
    } 
+   //***stops previous funtion if word starts with vowel
     else {
+      //looking for vowel
       let counter = 0
       for (let index = 0; index < word.length; index++) {
         const individualLetter = word[index];
@@ -87,7 +89,7 @@ const pigLatin = (word) => {
 // to close it ctrl + C
 const getPrompt = () => {
   rl.question('word ', (answer) => {
-    console.log( pigLatin(answer) );
+    console.log( pigLatinTest(answer) );
     getPrompt();
   });
 }
@@ -97,22 +99,22 @@ const getPrompt = () => {
 // to close them ctrl + C
 if (typeof describe === 'function') {
 
-  describe('#pigLatin()', () => {
+  describe('#pigLatinTest()', () => {
     it('should translate a simple word', () => {
-      assert.equal(pigLatin('car'), 'arcay');
-      assert.equal(pigLatin('dog'), 'ogday');
+      assert.equal(pigLatinTest('car'), 'arcay');
+      assert.equal(pigLatinTest('dog'), 'ogday');
     });
     it('should translate a complex word', () => {
-      assert.equal(pigLatin('create'), 'eatecray');
-      assert.equal(pigLatin('valley'), 'alleyvay');
+      assert.equal(pigLatinTest('create'), 'eatecray');
+      assert.equal(pigLatinTest('valley'), 'alleyvay');
     });
     it('should attach "yay" if word begins with vowel', () => {
-      assert.equal(pigLatin('egg'), 'eggyay');
-      assert.equal(pigLatin('emission'), 'emissionyay');
+      assert.equal(pigLatinTest('egg'), 'eggyay');
+      assert.equal(pigLatinTest('emission'), 'emissionyay');
     });
     it('should lowercase and trim word before translation', () => {
-      assert.equal(pigLatin('HeLlO '), 'ellohay');
-      assert.equal(pigLatin(' RoCkEt'), 'ocketray');
+      assert.equal(pigLatinTest('HeLlO '), 'ellohay');
+      assert.equal(pigLatinTest(' RoCkEt'), 'ocketray');
     });
   });
 } else {
